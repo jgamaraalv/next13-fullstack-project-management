@@ -2,7 +2,19 @@ This is a fullstack personal project with Nextjs 13 to study purposes.
 
 ## Getting Started
 
-First, run the development server:
+First, initiate Prisma:
+
+```bash
+npx prisma init
+```
+
+Config `.env` file with the `DATABASE_URL`, then run:
+
+```bash
+npx prisma db seed
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
