@@ -1,4 +1,4 @@
-This is a fullstack personal project with Nextjs 13 to study purposes.
+This is a fullstack personal project with Nextjs 13 only to study purposes.
 
 ## Getting Started
 
