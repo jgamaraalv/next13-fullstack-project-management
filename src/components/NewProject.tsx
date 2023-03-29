@@ -1,22 +1,30 @@
 "use client";
-import { createNewProject } from "@/lib/api";
-import { EventHandler, useState } from "react";
+import { useState, useTransition } from "react";
 import Modal from "react-modal";
+import { useRouter } from "next/navigation";
+
+import { createNewProject } from "@/lib/api";
 import Button from "./Button";
 import Input from "./Input";
 
 Modal.setAppElement("#modal");
 
 const NewProject = () => {
+  const router = useRouter();
   const [modalIsOpen, setIsOpen] = useState(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
+  const [isPending, startTransition] = useTransition();
   const [name, setName] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await createNewProject(name);
     closeModal();
+
+    startTransition(() => {
+      router.refresh();
+    });
   };
 
   return (
@@ -30,13 +38,17 @@ const NewProject = () => {
         className="w-3/4 bg-white rounded-xl p-8"
       >
         <h1 className="text-3xl mb-6">New Project</h1>
+
         <form className="flex items-center" onSubmit={handleSubmit}>
           <Input
             placeholder="project name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <Button type="submit">Create</Button>
+
+          <Button type="submit" disabled={isPending}>
+            Create
+          </Button>
         </form>
       </Modal>
     </div>

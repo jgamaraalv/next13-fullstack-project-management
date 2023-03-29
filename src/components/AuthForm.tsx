@@ -60,6 +60,7 @@ export default function AuthForm({ mode }: { mode: "register" | "signin" }) {
           <h2 className="text-3xl mb-2">{content.header}</h2>
           <p className="tex-lg text-black/25">{content.subheader}</p>
         </div>
+
         <form onSubmit={handleSubmit} className="py-10 w-full">
           {mode === "register" && (
             <div className="flex mb-8 justify-between">
@@ -91,6 +92,7 @@ export default function AuthForm({ mode }: { mode: "register" | "signin" }) {
               </div>
             </div>
           )}
+
           <div className="mb-8">
             <div className="text-lg mb-4 ml-2 text-black/50">Email</div>
             <Input
@@ -104,6 +106,7 @@ export default function AuthForm({ mode }: { mode: "register" | "signin" }) {
               }
             />
           </div>
+
           <div className="mb-8">
             <div className="text-lg mb-4 ml-2 text-black/50">Password</div>
             <Input
@@ -117,6 +120,7 @@ export default function AuthForm({ mode }: { mode: "register" | "signin" }) {
               }
             />
           </div>
+
           <div className="flex items-center justify-between">
             <div>
               <span>
@@ -128,6 +132,7 @@ export default function AuthForm({ mode }: { mode: "register" | "signin" }) {
                 </Link>
               </span>
             </div>
+
             <div>
               <Button type="submit" intent="secondary">
                 {content.buttonText}

@@ -14,7 +14,10 @@ export default function DashboardLayout({
   return (
     <div className="h-screen w-screen candy-mesh p-6">
       <GlassPane className="w-full h-full p-6 flex align-center container mx-auto">
-        <Sidebar />
+        <div className="mr-6">
+          <Sidebar />
+        </div>
+
         {children}
       </GlassPane>
       <div id="modal" />

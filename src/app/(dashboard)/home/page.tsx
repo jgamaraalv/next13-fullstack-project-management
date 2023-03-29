@@ -1,35 +1,12 @@
-import { cookies } from "next/headers";
-import Link from "next/link";
 import { Suspense } from "react";
-import type { User } from "@prisma/client";
 
 import Greetings from "@/components/Greetings";
-import { getUserFromCookie } from "@/lib/auth";
-import { db } from "@/lib/db";
 import GreetingsSkeleton from "@/components/GreetingsSkeleton";
-import { fakeDelay } from "@/lib/async";
-import ProjectCard from "@/components/ProjectCard";
 import TaskCard from "@/components/TaskCard";
-import NewProject from "@/components/NewProject";
-
-const getData = async () => {
-  await fakeDelay(2000);
-  const user = (await getUserFromCookie(cookies())) as User;
-  const projects = await db.project.findMany({
-    where: {
-      ownerId: user.id,
-    },
-    include: {
-      tasks: true,
-    },
-  });
-
-  return { projects };
-};
+import Loader from "@/components/Loader";
+import ProjectsList from "@/components/ProjectsList";
 
 export default async function Page() {
-  const { projects } = await getData();
-
   return (
     <div className="h-full overflow-y-auto pr-6 w-full">
       <div className=" h-full  items-stretch justify-center min-h-[content]">
@@ -38,21 +15,18 @@ export default async function Page() {
             <Greetings />
           </Suspense>
         </div>
+
         <div className="flex flex-2 grow items-center flex-wrap mt-3 -m-3 ">
-          {projects.map((project) => (
-            <div className="w-1/3 p-3" key={project.id}>
-              <Link href={`/project/${project.id}`}>
-                <ProjectCard project={project} />
-              </Link>
-            </div>
-          ))}
-          <div className="w-1/3 p-3">
-            <NewProject />
-          </div>
+          <Suspense fallback={<Loader />}>
+            <ProjectsList />
+          </Suspense>
         </div>
+
         <div className="mt-6 flex-2 grow w-full flex">
           <div className="w-full">
-            <TaskCard />
+            <Suspense fallback={<Loader />}>
+              <TaskCard />
+            </Suspense>
           </div>
         </div>
       </div>

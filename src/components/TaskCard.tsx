@@ -40,12 +40,14 @@ const TasksCard = async ({ title, tasks }: TaskCardProps) => {
         <div>
           <span className="text-3xl text-gray-600">{title}</span>
         </div>
+
         <div>
           <Button intent="text" className="text-violet-600">
             + Create New
           </Button>
         </div>
       </div>
+
       <div>
         {data && data.length ? (
           <div>
