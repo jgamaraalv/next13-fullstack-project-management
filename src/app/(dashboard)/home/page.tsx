@@ -9,6 +9,7 @@ import { db } from "@/lib/db";
 import GreetingsSkeleton from "@/components/GreetingsSkeleton";
 import { fakeDelay } from "@/lib/async";
 import ProjectCard from "@/components/ProjectCard";
+import TasksCard from "@/components/TaskCard";
 
 const getData = async () => {
   await fakeDelay(2000);
@@ -47,7 +48,9 @@ export default async function Page() {
           <div className="w-1/3 p-3">{/* new project here */}</div>
         </div>
         <div className="mt-6 flex-2 grow w-full flex">
-          <div className="w-full">{/* tasks here */}</div>
+          <div className="w-full">
+            <TasksCard />
+          </div>
         </div>
       </div>
     </div>
