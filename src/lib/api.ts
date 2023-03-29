@@ -27,7 +27,9 @@ const fetcher = async ({ url, method, body, json = true }: FetcherParams) => {
   }
 };
 
-export const register = async (user: User) => {
+export const register = async (
+  user: Pick<User, "email" | "password" | "firstName" | "lastName">
+) => {
   return fetcher({
     url: "/api/register",
     method: "POST",
@@ -36,7 +38,7 @@ export const register = async (user: User) => {
   });
 };
 
-export const signin = async (user: User) => {
+export const signin = async (user: Pick<User, "email" | "password">) => {
   return fetcher({
     url: "/api/signin",
     method: "POST",
