@@ -4,7 +4,7 @@ interface FetcherParams {
   url: string;
   method: "POST" | "PUT" | "DELETE" | "GET";
   body: Object;
-  json: boolean;
+  json?: boolean;
 }
 
 const fetcher = async ({ url, method, body, json = true }: FetcherParams) => {
@@ -44,5 +44,13 @@ export const signin = async (user: Pick<User, "email" | "password">) => {
     method: "POST",
     body: user,
     json: false,
+  });
+};
+
+export const createNewProject = (name: string) => {
+  return fetcher({
+    url: "/api/project",
+    method: "POST",
+    body: { name },
   });
 };
