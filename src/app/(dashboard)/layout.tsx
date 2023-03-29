@@ -12,7 +12,7 @@ export default function DashboardLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="h-screen w-screen candy-mesh p-6">
         <GlassPane className="w-full h-full p-6 flex align-center container mx-auto">
           {children}
         </GlassPane>
