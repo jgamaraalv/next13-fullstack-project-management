@@ -5,14 +5,15 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { FC } from "react";
 
-const icons = { Settings, User, Grid, Calendar };
+export const icons = { Settings, User, Grid, Calendar };
 
-type SidebarLinkProps = typeof Link & {
+interface SidebarLinkProps {
   link: {
-    link: string;
+    label: string;
     icon: keyof typeof icons;
+    link: string;
   };
-};
+}
 
 const SidebarLink: FC<SidebarLinkProps> = ({ link }) => {
   const pathname = usePathname();
@@ -35,3 +36,5 @@ const SidebarLink: FC<SidebarLinkProps> = ({ link }) => {
     </Link>
   );
 };
+
+export default SidebarLink;
