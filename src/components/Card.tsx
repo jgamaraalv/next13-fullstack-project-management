@@ -1,15 +1,15 @@
 import clsx from "clsx";
 import { FC } from "react";
 
-const GlassPane: FC<React.HTMLAttributes<HTMLDivElement>> = ({
-  children,
+const Card: FC<React.HTMLAttributes<HTMLDivElement>> = ({
   className,
+  children,
   ...props
 }) => {
   return (
     <div
       className={clsx(
-        "glass rounded-2xl border-solid border-2 border-gray-200",
+        "rounded-3xl px-10 py-4 drop-shadow-xl bg-white",
         className
       )}
       {...props}
@@ -19,4 +19,4 @@ const GlassPane: FC<React.HTMLAttributes<HTMLDivElement>> = ({
   );
 };
 
-export default GlassPane;
+export default Card;
