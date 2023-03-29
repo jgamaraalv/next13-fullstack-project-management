@@ -1,4 +1,5 @@
 import GlassPane from "@/components/GlassPane";
+import Sidebar from "@/components/Sidebar";
 
 export const metadata = {
   title: "Project Management - Dashboard",
@@ -13,6 +14,7 @@ export default function DashboardLayout({
   return (
     <div className="h-screen w-screen candy-mesh p-6">
       <GlassPane className="w-full h-full p-6 flex align-center container mx-auto">
+        <Sidebar />
         {children}
       </GlassPane>
     </div>
