@@ -1,5 +1,7 @@
 This is a fullstack personal project with Nextjs 13 only to study purposes.
 
+Live preview: https://next13-fullstack-project-management.vercel.app/signin
+
 ## Getting Started
 
 First, initiate Prisma:
