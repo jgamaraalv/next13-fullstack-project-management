@@ -14,6 +14,8 @@ Config `.env` file with the `DATABASE_URL`, then run:
 npx prisma db seed
 ```
 
+Config `.env` file with the `JWT_SECRET` and `COOKIE_NAME`.
+
 Then, run the development server:
 
 ```bash
